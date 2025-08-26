@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rohit Rajesh Nair | Data Analyst Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset everything */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      color: #ffffff;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+
+   /* Background Image + Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('Do-web-developers-still-use-HTML.png') no-repeat center center/cover;
+    z-index: -2; /* below everything */
+}
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.55); /* dim effect */
+    z-index: -1; /* overlay below content */
+}
+
+/* Header */
+header {
+    position: relative; /* stays in normal flow */
+    z-index: 1; /* above background & overlay */
+    text-align: center;
+    padding: 60px 20px 30px 20px;
+    margin: 0;
+}
+
+header img {
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 4px solid #FFFFFF;
+    margin-bottom: 15px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+    header p { font-size: 1.1rem; color: #facc15; }
+
+    /* Navbar */
+    nav {
+      margin-top: 20px;
+      text-align: center;
+    }
+    nav a {
+      color: #f1f5f9;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #00e5ff; }
+
+    /* Sections - remove extra gaps */
+    section {
+      width: 90%;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 1.9rem;
+      color: #00e5ff;
+      border-left: 6px solid #facc15;
+      padding-left: 12px;
+    }
+
+    /* Cards */
+    .card {
+      background: rgba(30,41,59,0.85);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,229,255,0.3);
+    }
+    .project-card {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.project-card:hover {
+  background: #284c5c;
+} 
+
+.details {
+  display: none;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #f5f3f3;
+}
+
+.project-card.active .details {
+  display: block;
+}
+.project-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 18px;
+  background: #ffffff;   /* White background */
+  color: #0f172a;        /* Dark text for contrast */
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.project-btn:hover {
+  background: #facc15;   /* Yellow on hover */
+  color: #0f172a;
+  transform: translateY(-2px);
+}
+/* contact button*/
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  color: #111827;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin: 8px 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+  background: #facc15;
+  color: #111827;
+}
+
+.contact-btn i {
+  margin-right: 8px;
+}
+
+    /* Footer always flush */
+    footer {
+      background: rgba(15, 23, 42, 0.85);
+      text-align: center;
+      padding: 15px;
+      color: #f1f5f9;
+      font-size: 0.9rem;
+      border-top: 1px solid #334155;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Canvas -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Header -->
+  <header>
+    <img src="rohit profile photo.jpg" alt="Profile Photo">
+    <h1>Rohit Rajesh Nair</h1>
+    <p>Aspiring Data Analyst | Python | SQL | Data Visualization</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- About -->
+  <section id="about" class="container">
+    <h2>About Me</h2>
+    <div class="card">
+      <p>
+      I am an aspiring Data Analyst with strong skills in Python, SQL, and Data Visualization.Passionate about extracting insights from data, I enjoy building dashboards, analyzing trends, and creating data-driven solutions.
+With hands-on experience in data cleaning, transformation, and visualization, I aim to leverage my skills to solve real-world business problems and support decision-making.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="container">
+    <h2>Skills</h2>
+    <div class="card">
+      <ul>
+        <li>Python (Pandas, NumPy, Matplotlib, Seaborn)</li>
+        <li>SQL & Database Management</li>
+        <li>Excel & Data Cleaning</li>
+        <li>Data Visualization & Dashboarding</li>
+        <li>Problem Solving & Statistical Analysis</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="container">
+    <h2>Education</h2>
+    <div class="card project-card" onclick="toggleDetails(this)">
+      <h3>B.Tech - Electrical and Computer Engineering</h3>
+      <p>Amrita Vishwa Vidyapeetham, Amritapuri</p>
+      <div class="details">
+        <p>08/2021 – 08/2025</p>
+        <p>CGPA: 9.0 | 4th rank holder</p>
+        <p>Graduated First Class with Distinction</p>
+      </div>
+    </div>
+    <div class="card project-card" onclick="toggleDetails(this)">
+      <h3>Higher Secondary</h3>
+      <p>Vidhyadhiraja Vishwa Vidyapeetom, Mavelikara</p>
+      <div class="details">
+        <p>04/2019 – 05/2021</p>
+        <p>92.4% Aggregate</p>
+      </div>
+    </div>
+    <div class="card project-card" onclick="toggleDetails(this)">
+      <h3>Secondary Education</h3>
+      <p>Indian International School (DSO), Dubai</p>
+      <div class="details">
+        <p>03/2018 – 03/2019</p>
+        <p>86.2% Aggregate</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="container">
+    <h2>Professional Experience</h2>
+    <div class="card project-card" onclick="toggleDetails(this)">
+      <h3>Data Analyst Intern</h3>
+      <p>Luminar Technolab  12/2024 – 05/2024</p>
+      <div class="details">
+        <p>✔ Worked on multiple real-world datasets to extract insights.</p>
+        <p>✔ Performed data collection, cleaning, transformation, and preprocessing using Python and SQL.</p>
+        <p>✔ Built dashboards and reports for KPIs using Matplotlib, Seaborn, and Power BI.</p>
+        <p>✔ Contributed to end-to-end data analysis pipeline: raw data → insights → visualization.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="container">
+    <h2>Projects</h2>
+    <div class="card project-card" onclick="toggleDetails(this)">
+  <h3>Hotel Booking Cancellation Prediction</h3>
+  <p>Machine Learning model to predict hotel booking cancellations.</p>
+  <div class="details">
+    <p>✔ Compared different ML models: KNN, SVC, and BernoulliNB for predicting cancellations.</p>
+    <p>✔ KNN achieved the best performance with 85% accuracy, balanced precision & recall.</p>
+    <p>✔ Helps hotels forecast cancellations and optimize booking strategies.</p>
+    <a href="https://github.com/rohit150800/mountain-vs-beach-sampling-/blob/main/5_hotel.ipynb" 
+       target="_blank" class="project-btn">🔗 View Project</a>
+  </div>
+</div>
+
+    <div class="card project-card" onclick="toggleDetails(this)">
+      <h3>Virtual Mouse</h3>
+      <p>Hand and Face Gesture Based System Control using MediaPipe and OpenCV</p>
+      <div class="details">
+      <p>✔ Developed a computer vision–based system that enables hands-free interaction with a computer using hand gestures.</p>
+      <p>✔ Implemented with MediaPipe, OpenCV, and PyAutoGUI, the system recognizes gestures like open palm, closed palm, index/pinky finger movements, and scrolling gestures to perform actions such as cursor movement, clicks, and scrolling.</p>
+      <p>✔ This project demonstrates the potential of gesture-driven human-computer interaction, reducing reliance on traditional input devices.</p>
+        <a href="https://github.com/rohit150800/dl-project"
+        target="_blank" class="project-btn">🔗 View Project</a>
+      </div>
+    </div>
+      <div class="card project-card" onclick="toggleDetails(this)">
+      <h3>E-commerce Data Acquisition</h3>
+      <p>Scraped product data for trend analysis.</p>
+      <div class="details">
+        <p>✔ Built scraper with Python (BeautifulSoup).</p>
+        <p>✔ Collected product prices & reviews.</p>
+        <p>✔ Analyzed & visualized sales trends.</p>
+        <a href="https://github.com/rohit150800/Mycaptain_Pythonassignments/tree/main/ecommerce"
+        target="_blank" class="project-btn">🔗 View Project</a>
+      </div>
+    </div>
+    <div class="card project-card" onclick="toggleDetails(this)">
+      <h3>Hospital Management System</h3>
+      <p>Database-driven system using Python (Tkinter) & SQL.</p>
+      <div class="details">
+        <p>✔ Built a Hospital Management System for storing and managing databases.</p>
+        <p>✔ Designed UI in Tkinter for managing patient data.</p>
+        <p>✔ Used SQL for storage & retrieval.</p>
+        <p>✔ Improved hospital workflow efficiency.</p>
+      <!-- 👇 Project GitHub Link -->
+        <a href="https://github.com/rohit150800/sql_Hospital_Management_System" 
+        target="_blank" class="project-btn">🔗 View Project</a>
+      </div>
+    </div>
+    <div class="card project-card" onclick="toggleDetails(this)">
+      <h3>Pharmacy Billing System</h3>
+      <p>Billing software using Python & SQL.</p>
+      <div class="details">
+        <p>✔ Built a pharmacy billing software for streamlined transactions.</p>
+        <p>✔ Applied OOP for scalability.</p>
+        <p>✔ Implemented SQL for transaction data storage.</p>
+        <p>✔ Automated bill generation & reporting.</p>
+      </div>
+    </div>
+    <div class="card project-card" onclick="toggleDetails(this)">x`
+      <h3>Dyslexia Detection (SIH Hackathon Winner)</h3>
+      <p>Decision tree model + website for early detection.</p>
+      <div class="details">
+        <p>✔ Collected & preprocessed dataset of student handwriting.</p>
+        <p>✔ Built website with Azure API for image-to-text conversion.</p>
+        <p>✔ Developed decision tree classifier in Python.</p>
+        <p>✔ Integrated with web app for real-time testing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications" class="container">
+    <h2>Certifications</h2>
+    <div class="card">
+      <ul>
+        <li>Certified in Python for Data Science</li>
+        <li>Certified in SQL for Data Analysis</li>
+        <li>Certified in Data Visualization with Power BI</li>
+        <li>Full Stack Development Workshop</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section id="achievements" class="container">
+    <h2>Achievements & Publications</h2>
+    <div class="card project-card" onclick="toggleDetails(this)">
+      <h3>Blockchain-Powered Solution for P2P Energy Trading</h3>
+      <p>SmartGenCo4, 2025 – Accepted for Publication</p>
+      <div class="details">
+        <p>✔ Proposed decentralized framework for real-time peer-to-peer energy trading.</p>
+        <p>✔ Designed user-friendly UI with Ethereum smart contracts.</p>
+        <p>✔ Integrated IoT monitoring of energy generation/consumption.</p>
+      </div>
+    </div>
+    <div class="card project-card" onclick="toggleDetails(this)">
+      <h3>Dyslexia Detection (SIH Hackathon Winner)</h3>
+      <p>Winner – ₹1 Lakh Prize</p>
+      <div class="details">
+        <p>✔ Decision tree model + website for early detection.</p>
+        <p>✔ Data collection, preprocessing, and web integration.</p>
+      </div>
+    </div>
+    <div class="card project-card" onclick="toggleDetails(this)">
+      <h3>Basketball Tournament</h3>
+      <p>Runner-up – Mohandas School of Engineering (2024)</p>
+      <div class="details">
+        <p>✔ Secured 2nd place, demonstrating teamwork & leadership.</p>
+      </div>
+    </div>
+    <div class="card project-card" onclick="toggleDetails(this)">
+      <h3>Community Outreach</h3>
+      <p>Case Study: Handloom Culture in India</p>
+      <div class="details">
+        <p>✔ Researched challenges in Kerala's handloom industry.</p>
+        <p>✔ Identified sustainability obstacles & provided insights.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+<!-- Contact -->
+<section id="contact" class="container">
+  <h2>Contact</h2>
+  <div class="card">
+    <p>Contact No: 9778017814</p>
+    <a href="mailto:rohithrajeshnair@gmail.com" target="_blank" class="contact-btn">📧 Email</a>
+    <a href="https://github.com/rohit150800" target="_blank" class="contact-btn">🐙 GitHub</a>
+    <a href="https://linkedin.com/in/rohit-rajesh-nair-10570a222" target="_blank" class="contact-btn">🔗 LinkedIn</a>
+    <a href="https://github.com/rohit150800/portfolio/blob/main/Rohit-Rajesh-Nair-FlowCV-Resume-4.pdf" download class="contact-btn">📄 Download Resume  </a>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Rohit Rajesh Nair. All rights reserved.</p>
+  </footer>
+<!-- Particle Animation -->
+  <script>
+  function toggleDetails(card) {
+    // Close all other cards
+    document.querySelectorAll(".project-card").forEach(c => {
+      if (c !== card) c.classList.remove("active");
+    });
+    // Toggle only the clicked card
+    card.classList.toggle("active");
+  }
+</script>
+
+</body>
+</html>
